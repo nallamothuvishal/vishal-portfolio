@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import './Navbar.css';
 
 const navItems = ['Home', 'About', 'Skills', 'Education', 'Projects', 'Certifications', 'Contact'];
 
-function Navbar() {
+function Navbar({ theme, setTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNavClick = (sectionId) => {
@@ -13,6 +13,10 @@ function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   return (
@@ -31,15 +35,28 @@ function Navbar() {
           </span>
         </button>
 
-        <button
-          type="button"
-          className="menu-toggle"
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          {menuOpen ? <FiX /> : <FiMenu />}
-        </button>
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? <FiSun /> : <FiMoon />}
+            <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+          </button>
+
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
+        </div>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {navItems.map((item) => {

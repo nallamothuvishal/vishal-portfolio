@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,6 +12,16 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return savedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
   useEffect(() => {
     const reveals = document.querySelectorAll('.reveal');
 
@@ -37,9 +47,14 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
     <div className="app-shell">
-      <Navbar />
+      <Navbar theme={theme} setTheme={setTheme} />
       <main>
         <Hero />
         <About />

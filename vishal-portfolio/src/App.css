@@ -1,0 +1,60 @@
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+main {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+section {
+  padding: 96px 0;
+  scroll-margin-top: 90px;
+}
+
+.section-heading {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.section-intro {
+  margin: 0;
+  color: var(--text-secondary);
+  max-width: 700px;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  section {
+    padding: 72px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
+  }
+}

@@ -16,12 +16,12 @@ const projects = [
       'PostgreSQL',
       'Supabase',
     ],
-    github: '#',
+    github: 'https://github.com/nallamothuvishal/drk-cet',
     demo: '#',
   },
   {
     id: '02',
-    title: 'AI Resume ATS & Job Matching System',
+    title: 'AI-Powered Resume Analysis and Job Recommendation System',
     description:
       'Developed an AI-based system to analyze resumes against job descriptions and identify relevant and missing skills.',
     tech: ['NLP', 'Machine Learning', 'Python', 'AI'],
@@ -33,7 +33,7 @@ const projects = [
       'Candidate profile analysis',
       'Recommendation module',
     ],
-    github: '#',
+    github: 'https://github.com/nallamothuvishal/atsbasedresume',
     demo: '#',
   },
   {

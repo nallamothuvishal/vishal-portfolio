@@ -35,6 +35,22 @@ function Navbar({ theme, setTheme }) {
           </span>
         </button>
 
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          {navItems.map((item) => {
+            const id = item.toLowerCase();
+            return (
+              <button
+                type="button"
+                key={item}
+                className={`nav-link ${item === 'Home' ? 'active' : ''}`}
+                onClick={() => handleNavClick(id === 'home' ? 'home' : id)}
+              >
+                {item}
+              </button>
+            );
+          })}
+        </div>
+
         <div className="nav-actions">
           <button
             type="button"
@@ -56,22 +72,6 @@ function Navbar({ theme, setTheme }) {
           >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
-        </div>
-
-        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          {navItems.map((item) => {
-            const id = item.toLowerCase();
-            return (
-              <button
-                type="button"
-                key={item}
-                className={`nav-link ${item === 'Home' ? 'active' : ''}`}
-                onClick={() => handleNavClick(id === 'home' ? 'home' : id)}
-              >
-                {item}
-              </button>
-            );
-          })}
         </div>
       </nav>
     </header>

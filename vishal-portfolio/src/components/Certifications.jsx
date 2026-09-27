@@ -2,9 +2,18 @@ import { FiAward } from 'react-icons/fi';
 import './Certifications.css';
 
 const certifications = [
-  'Python Programming & Application Development',
-  'Comprehensive Java Programming & Development',
-  'Data Analytics & Data Interpretation',
+  {
+    name: 'Python Programming & Application Development',
+    href: 'https://drive.google.com/file/d/1NMC9svQWkjJtD32rlqLFLN5NX8IM-71p/view',
+  },
+  {
+    name: 'Comprehensive Java Programming & Development',
+    href: 'https://drive.google.com/file/d/1tradr8i5Aw6ssxBJO3ynjIJ-Z2G-HmF7/view',
+  },
+  {
+    name: 'Data Analytics & Data Interpretation',
+    href: 'https://drive.google.com/file/d/1nJU4BmusqicQRBYYPSKuwPlqedtX7mLM/view',
+  },
 ];
 
 function Certifications() {
@@ -16,10 +25,10 @@ function Certifications() {
       </div>
 
       <div className="certifications-grid reveal">
-        {certifications.map((item) => (
-          <article key={item} className="cert-card">
+        {certifications.map(({ name, href }) => (
+          <article key={name} className="cert-card">
             <span className="cert-icon" aria-hidden="true"><FiAward /></span>
-            <h3>{item}</h3>
+            <h3>{href ? <a href={href}>{name}</a> : name}</h3>
           </article>
         ))}
       </div>
